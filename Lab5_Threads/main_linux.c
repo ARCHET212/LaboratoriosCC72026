@@ -24,9 +24,9 @@ int main() {
     pthread_t threads[NUM_THREADS];
     ThreadResult results[NUM_THREADS];
     
-    clock_t start_time = clock();  // Para medir rendimiento [cite: 50]
+    clock_t start_time = clock();  // Para medir rendimiento
 
-    // 1. Creación de hilos y asignación de tareas [cite: 36, 42]
+    // 1. Creación de hilos y asignación de tareas 
     for (int i = 0; i < NUM_THREADS; i++) {
         results[i].thread_id = i;
         results[i].start_offset = i * chunk_size;
@@ -40,19 +40,19 @@ int main() {
         pthread_create(&threads[i], NULL, process_log_chunk, &results[i]);
     }
 
-    // 2. Esperar a que todos los hilos terminen [cite: 18, 38]
+    // 2. Esperar a que todos los hilos terminen
     for (int i = 0; i < NUM_THREADS; i++) {
         pthread_join(threads[i], NULL);
     }
 
-    // 3. Combinar resultados [cite: 39]
+    // 3. Combinar resultados 
     ThreadResult final_result;
     merge_results(&final_result, results, NUM_THREADS);
     
     clock_t end_time = clock();
     double elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
 
-    // 4. Imprimir reporte final [cite: 19, 43]
+    // 4. Imprimir reporte final 
     print_final_report(&final_result);
     printf("Tiempo de procesamiento: %.3f segundos\n", elapsed_time);
 

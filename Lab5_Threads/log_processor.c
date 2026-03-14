@@ -148,7 +148,7 @@ void parse_line(const char* line, ThreadResult* result) {
         // 2. Incrementar contador para esta URL
         hash_table_increment(result->url_table, url);
         
-        // 3. Contar errores HTTP (400-599) [cite: 16]
+        // 3. Contar errores HTTP (400-599) 
         if (status_code >= 400 && status_code <= 599) {
             result->error_count++;
         }
@@ -226,7 +226,7 @@ void merge_hash_tables(HashTable* dest, HashTable* src) {
 }
 
 /**
- * Combinar resultados de todos los hilos [cite: 39]
+ * Combinar resultados de todos los hilos 
  */
 void merge_results(ThreadResult* final_result, ThreadResult* thread_results, int num_threads) {
     // Inicializar el resultado final
@@ -251,7 +251,7 @@ void merge_results(ThreadResult* final_result, ThreadResult* thread_results, int
 }
 
 /**
- * Encontrar la URL más visitada [cite: 15, 45]
+ * Encontrar la URL más visitada
  */
 void find_most_visited_url(HashTable* url_table, char* most_visited_url, int* max_count) {
     *max_count = 0;
@@ -270,7 +270,7 @@ void find_most_visited_url(HashTable* url_table, char* most_visited_url, int* ma
 }
 
 /**
- * Imprimir reporte final [cite: 19, 43]
+ * Imprimir reporte final 
  */
 void print_final_report(ThreadResult* final_result) {
     char most_visited[MAX_URL_LENGTH];
